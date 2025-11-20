@@ -5,7 +5,7 @@ import org.jreleaser.model.Active.NEVER
 plugins {
     `java-library`
     `maven-publish`
-    id("org.jreleaser") version "1.21.0"
+    id("org.jreleaser") version "1.20.0"
 }
 
 group = "net.jacobpeterson"
