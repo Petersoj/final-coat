@@ -51,6 +51,7 @@ publishing {
         create<MavenPublication>("maven") {
             from(components["java"])
             pom {
+                name = artifactId
                 description = "An Error Prone plugin check for `final` keyword usage on effectively final variables."
                 val githubRepoPath = "Petersoj/final-coat"
                 url = "https://github.com/${githubRepoPath}"
