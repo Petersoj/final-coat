@@ -18,7 +18,7 @@ jobs:
           cache: gradle
           cache-dependency-path: gradle/wrapper/gradle-wrapper.properties
       - name: Gradle JRelease
-        run: ./gradlew clean build publish jreleaserFullRelease --no-configuration-cache --no-daemon
+        run: ./gradlew clean build publish jreleaserFullRelease --no-daemon --no-configuration-cache
         env:
           JRELEASER_GPG_PASSPHRASE: ${{ secrets.JRELEASER_GPG_PASSPHRASE }}
           JRELEASER_GPG_PUBLIC_KEY: ${{ secrets.JRELEASER_GPG_PUBLIC_KEY }}
