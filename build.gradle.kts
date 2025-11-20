@@ -14,6 +14,7 @@ version = "1.0.0"
 java {
     sourceCompatibility = VERSION_25
     targetCompatibility = VERSION_25
+    withJavadocJar()
     withSourcesJar()
 }
 
@@ -32,6 +33,15 @@ tasks.compileJava {
             "--add-exports=jdk.compiler/com.sun.tools.javac.parser=ALL-UNNAMED",
             "--add-exports=jdk.compiler/com.sun.tools.javac.tree=ALL-UNNAMED",
             "--add-exports=jdk.compiler/com.sun.tools.javac.util=ALL-UNNAMED"))
+}
+
+tasks.javadoc {
+    isFailOnError = false
+    options {
+        (this as CoreJavadocOptions).addBooleanOption("Xdoclint:none", true)
+        addStringOption("link",
+                "https://docs.oracle.com/en/java/javase/${java.targetCompatibility.majorVersion}/docs/api/")
+    }
 }
 
 val jreleaserDeployDirectory = file("build/jreleaser-deploy/")
