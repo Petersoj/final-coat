@@ -37,11 +37,6 @@ tasks.compileJava {
 
 tasks.javadoc {
     isFailOnError = false
-    options {
-        (this as CoreJavadocOptions).addBooleanOption("Xdoclint:none", true)
-        addStringOption("link",
-                "https://docs.oracle.com/en/java/javase/${java.targetCompatibility.majorVersion}/docs/api/")
-    }
 }
 
 val jreleaserDeployDirectory = file("build/jreleaser-deploy/")
