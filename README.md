@@ -15,7 +15,7 @@ For `build.gradle.kts`:
 ```kotlin
 dependencies {
     // ...
-    errorprone("net.jacobpeterson:final-coat:1.0.0")
+    errorprone("net.jacobpeterson:final-coat:1.1.0")
 }
 // ...
 tasks.withType(JavaCompile::class) {
@@ -30,7 +30,7 @@ For `build.gradle`:
 ```groovy
 dependencies {
     // ...
-    errorprone "net.jacobpeterson:final-coat:1.0.0"
+    errorprone "net.jacobpeterson:final-coat:1.1.0"
 }
 // ...
 tasks.withType(JavaCompile) {
@@ -60,7 +60,7 @@ For `pom.xml`:
                     <path>
                         <groupId>net.jacobpeterson</groupId>
                         <artifactId>final-coat</artifactId>
-                        <version>1.0.0</version>
+                        <version>1.1.0</version>
                     </path>
                 </annotationProcessorPaths>
             </configuration>
