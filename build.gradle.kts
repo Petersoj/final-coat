@@ -5,7 +5,8 @@ import org.jreleaser.model.Active.NEVER
 plugins {
     `java-library`
     `maven-publish`
-    id("org.jreleaser") version "1.20.0"
+    id("com.github.ben-manes.versions") version "0.53.0"
+    id("org.jreleaser") version "1.22.0"
 }
 
 group = "net.jacobpeterson"
@@ -24,7 +25,7 @@ repositories {
 
 dependencies {
     annotationProcessor("com.google.auto.service:auto-service:1.1.1")
-    implementation("com.google.errorprone:error_prone_core:2.44.0")
+    implementation("com.google.errorprone:error_prone_core:2.46.0")
 }
 
 tasks.compileJava {
@@ -80,8 +81,10 @@ publishing {
 
 jreleaser {
     signing {
-        active = ALWAYS
-        armored = true
+        pgp {
+            active = ALWAYS
+            armored = true
+        }
     }
     deploy {
         maven {
