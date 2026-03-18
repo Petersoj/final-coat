@@ -6,7 +6,7 @@ plugins {
     `java-library`
     `maven-publish`
     id("com.github.ben-manes.versions") version "0.53.0"
-    id("org.jreleaser") version "1.22.0"
+    id("org.jreleaser") version "1.23.0"
 }
 
 group = "net.jacobpeterson"
@@ -25,10 +25,10 @@ repositories {
 
 dependencies {
     annotationProcessor("com.google.auto.service:auto-service:1.1.1")
-    implementation("com.google.errorprone:error_prone_core:2.46.0")
+    implementation("com.google.errorprone:error_prone_core:2.48.0")
 }
 
-tasks.compileJava {
+tasks.withType(JavaCompile::class) {
     options.compilerArgs.addAll(setOf(
             "--add-exports=jdk.compiler/com.sun.tools.javac.code=ALL-UNNAMED",
             "--add-exports=jdk.compiler/com.sun.tools.javac.parser=ALL-UNNAMED",
@@ -36,47 +36,41 @@ tasks.compileJava {
             "--add-exports=jdk.compiler/com.sun.tools.javac.util=ALL-UNNAMED"))
 }
 
-tasks.javadoc {
+tasks.withType(Javadoc::class) {
     isFailOnError = false
 }
 
 val jreleaserDeployDirectory = file("build/jreleaser-deploy/")
 
 publishing {
-    publications {
-        create<MavenPublication>("maven") {
-            from(components["java"])
-            pom {
-                name = artifactId
-                description = "An Error Prone plugin check for `final` keyword usage on effectively final variables."
-                val githubRepoPath = "Petersoj/final-coat"
-                url = "https://github.com/${githubRepoPath}"
-                inceptionYear = "2025"
-                licenses {
-                    license {
-                        name = "MIT License"
-                        url = "https://opensource.org/licenses/MIT"
-                    }
+    publications.create("maven", MavenPublication::class) {
+        from(components["java"])
+        pom {
+            name = artifactId
+            description = "An Error Prone plugin check for `final` keyword usage on effectively final variables."
+            val githubRepoPath = "Petersoj/final-coat"
+            url = "https://github.com/${githubRepoPath}"
+            inceptionYear = "2025"
+            licenses {
+                license {
+                    name = "MIT License"
+                    url = "https://opensource.org/licenses/MIT"
                 }
-                developers {
-                    developer {
-                        id = "Petersoj"
-                        name = "Jacob Peterson"
-                    }
+            }
+            developers {
+                developer {
+                    id = "Petersoj"
+                    name = "Jacob Peterson"
                 }
-                scm {
-                    connection = "scm:git:git://github.com/${githubRepoPath}.git"
-                    developerConnection = "scm:git:ssh://github.com:${githubRepoPath}.git"
-                    url = pom.url
-                }
+            }
+            scm {
+                connection = "scm:git:git://github.com/${githubRepoPath}.git"
+                developerConnection = "scm:git:ssh://github.com:${githubRepoPath}.git"
+                url = pom.url
             }
         }
     }
-    repositories {
-        maven {
-            url = uri(jreleaserDeployDirectory)
-        }
-    }
+    repositories.maven(uri(jreleaserDeployDirectory))
 }
 
 jreleaser {
