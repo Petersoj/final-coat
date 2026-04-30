@@ -1,6 +1,6 @@
 # FinalCoat
 
-[![Maven Central](https://img.shields.io/badge/Maven_Central-1.2.2-blue?logo=apachemaven)](https://central.sonatype.com/artifact/net.jacobpeterson/final-coat)
+[![Maven Central](https://img.shields.io/badge/Maven_Central-1.2.3-blue?logo=apachemaven)](https://central.sonatype.com/artifact/net.jacobpeterson/final-coat)
 [![Java Version](https://img.shields.io/badge/Java_Version-25-orange?logo=java)](https://openjdk.org/projects/jdk/25)
 [![GitHub License](https://img.shields.io/github/license/Petersoj/final-coat)](https://github.com/Petersoj/final-coat/blob/main/LICENSE.txt)
 
@@ -16,7 +16,7 @@ For `build.gradle.kts`:
 ```kotlin
 dependencies {
     // ...
-    errorprone("net.jacobpeterson:final-coat:1.2.2")
+    errorprone("net.jacobpeterson:final-coat:1.2.3")
 }
 // ...
 tasks.withType(JavaCompile::class) {
@@ -31,7 +31,7 @@ For `build.gradle`:
 ```groovy
 dependencies {
     // ...
-    errorprone "net.jacobpeterson:final-coat:1.2.2"
+    errorprone "net.jacobpeterson:final-coat:1.2.3"
 }
 // ...
 tasks.withType(JavaCompile) {
@@ -61,7 +61,7 @@ For `pom.xml`:
                     <path>
                         <groupId>net.jacobpeterson</groupId>
                         <artifactId>final-coat</artifactId>
-                        <version>1.2.2</version>
+                        <version>1.2.3</version>
                     </path>
                 </annotationProcessorPaths>
             </configuration>
