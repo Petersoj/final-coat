@@ -97,3 +97,7 @@ jreleaser {
         }
     }
 }
+
+tasks.jreleaserFullRelease {
+    mustRunAfter(tasks.build)
+}
