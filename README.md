@@ -1,6 +1,7 @@
 # FinalCoat
 
-[![Maven Central Version](https://img.shields.io/maven-central/v/net.jacobpeterson/final-coat)](https://central.sonatype.com/artifact/net.jacobpeterson/final-coat)
+[![Maven Central](https://img.shields.io/badge/Maven_Central-1.2.2-blue?logo=apachemaven)](https://central.sonatype.com/artifact/net.jacobpeterson/final-coat)
+[![Java Version](https://img.shields.io/badge/Java_Version-25-orange?logo=java)](https://openjdk.org/projects/jdk/25)
 [![GitHub License](https://img.shields.io/github/license/Petersoj/final-coat)](https://github.com/Petersoj/final-coat/blob/main/LICENSE.txt)
 
 An [Error Prone](https://errorprone.info/) plugin check for `final` keyword usage on effectively final variables.
