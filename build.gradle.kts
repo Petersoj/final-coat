@@ -5,7 +5,7 @@ import org.jreleaser.model.Active.NEVER
 plugins {
     `java-library`
     `maven-publish`
-    id("com.github.ben-manes.versions") version "0.53.0"
+    id("com.github.ben-manes.versions") version "0.54.0"
     id("org.jreleaser") version "1.23.0"
 }
 
@@ -25,7 +25,7 @@ repositories {
 
 dependencies {
     annotationProcessor("com.google.auto.service:auto-service:1.1.1")
-    implementation("com.google.errorprone:error_prone_core:2.48.0")
+    implementation("com.google.errorprone:error_prone_core:2.49.0")
 }
 
 tasks.withType(JavaCompile::class) {
