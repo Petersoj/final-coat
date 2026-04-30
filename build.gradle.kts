@@ -10,7 +10,7 @@ plugins {
 }
 
 group = "net.jacobpeterson"
-version = "1.2.1"
+version = "1.2.2"
 
 java {
     sourceCompatibility = VERSION_25
