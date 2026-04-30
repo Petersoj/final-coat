@@ -6,7 +6,7 @@ plugins {
     `java-library`
     `maven-publish`
     id("com.github.ben-manes.versions") version "0.54.0"
-    id("org.jreleaser") version "1.23.0"
+    id("org.jreleaser") version "1.24.0"
 }
 
 group = "net.jacobpeterson"
