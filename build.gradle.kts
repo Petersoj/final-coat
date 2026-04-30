@@ -40,16 +40,15 @@ tasks.withType(Javadoc::class) {
     isFailOnError = false
 }
 
-val jreleaserDeployDirectory = file("build/jreleaser-deploy/")
+val jreleaserMavenRepositoryDirectory = layout.buildDirectory.dir("jreleaser-staging")
 
 publishing {
-    publications.create("maven", MavenPublication::class) {
+    publications.create("jreleaser", MavenPublication::class) {
         from(components["java"])
         pom {
             name = artifactId
             description = "An Error Prone plugin check for `final` keyword usage on effectively final variables."
-            val githubRepoPath = "Petersoj/final-coat"
-            url = "https://github.com/${githubRepoPath}"
+            url = "https://github.com/Petersoj/final-coat"
             inceptionYear = "2025"
             licenses {
                 license {
@@ -64,13 +63,13 @@ publishing {
                 }
             }
             scm {
-                connection = "scm:git:git://github.com/${githubRepoPath}.git"
-                developerConnection = "scm:git:ssh://github.com:${githubRepoPath}.git"
+                connection = pom.url.map { "scm:git:$it.git" }
+                developerConnection = connection
                 url = pom.url
             }
         }
     }
-    repositories.maven(uri(jreleaserDeployDirectory))
+    repositories.maven(uri(jreleaserMavenRepositoryDirectory))
 }
 
 jreleaser {
@@ -86,7 +85,8 @@ jreleaser {
                 create("sonatype") {
                     active = ALWAYS
                     url = "https://central.sonatype.com/api/v1/publisher"
-                    stagingRepository(jreleaserDeployDirectory.path)
+                    stagingRepository(jreleaserMavenRepositoryDirectory.get())
+                    skipPublicationCheck = true
                 }
             }
         }
